@@ -1,0 +1,195 @@
+package lab8;
+import java.util.Scanner;
+import java.lang.Math;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Liquid a = new Liquid();
+		System.out.println("Drink a: " + a.ToString());
+		System.out.println("-------------------------");
+        Hot_drinks b = new Hot_drinks(3,  "spurtne");
+        System.out.println("Hot_drinks b: " + b.ToString());
+        System.out.println("Hot_drinks b (Change): ");
+        b.Read();
+        System.out.println("Hot_drinks b (Changed): " + b.ToString());
+        System.out.println("-------------------------");
+        Cold_drinks c = new Cold_drinks(2, 'c');
+        System.out.println("Geometrical_Dot c: " + c.ToString());
+        System.out.println("-------------------------");
+
+	}
+
+}
+
+package lab8;
+import java.util.Scanner;
+import java.lang.Math;
+
+public class Liquid {
+	Scanner scan = new Scanner(System.in);
+
+	private int density; //густинa
+
+        public Liquid()
+        {
+            this.density = 0;
+        }
+        public Liquid(int density)
+        {
+            this.density = density;
+        }
+        public Liquid(Liquid p)
+        {
+            this.density = p.density;
+        }
+        public int GetDensity()
+        {
+            return this.density;
+        }
+        public void SetDensity(int value)
+        {
+            this.density = value;
+        }
+        protected void finalize()
+        {
+        	System.out.println("Destructor Was Called");
+        }
+
+        public void Read()
+        {
+        	System.out.println("denisty: ");
+            this.density = scan.nextInt();
+        }
+        public String ToString()
+        {
+            return "Liquid[" + "density: " + this.density + "]";
+        }
+}
+
+
+package lab8;
+import java.util.Scanner;
+import java.lang.Math;
+
+public class Hot_drinks extends Liquid {
+
+	Scanner scan = new Scanner(System.in);
+	private String tup;
+    public Hot_drinks()
+    {
+        this.SetDensity(0);
+        this.tup = "";
+    }
+    public Hot_drinks(int density, String tup)
+    {
+        this.SetDensity(density);
+        this.tup = tup;
+    }
+    
+    public Hot_drinks(String tup)
+    {
+        this.SetDensity(0);
+        this.tup = tup;
+    }
+    public Hot_drinks(int density)
+    {
+        this.SetDensity(density);
+        this.tup = "";
+    }
+    public Hot_drinks(Hot_drinks c_d)
+    {
+        this.SetDensity(c_d.GetDensity());
+        this.tup = c_d.tup;
+    }
+    public String GetTup()
+    {
+        return this.tup;
+    }
+    public void SetTup(String value)
+    {
+        this.tup = value;
+    }
+    protected void finalize()
+    {
+    	System.out.println("Destructor Was Called");
+    }
+    public void Read()
+    {
+    	System.out.println("liquid: ");
+    	System.out.println("density: ");
+        int density = scan.nextInt();
+        this.SetDensity(density);
+        System.out.println("tup: ");
+        this.tup = scan.next();
+    }
+    public String ToString()
+    {
+        return "Color_Dot["  + "liquid: " + "[density: " + this.GetDensity() +
+        "]" + " tup: " + this.tup + "]";
+}
+}
+
+
+package lab8;
+import java.util.Scanner;
+import java.lang.Math;
+
+public class Cold_drinks extends Liquid {
+
+	Scanner scan = new Scanner(System.in);
+	private int temp;
+    public Cold_drinks()
+    {
+        this.SetDensity(0);
+        this.temp = 0;
+    }
+    public Cold_drinks(int density, int temp)
+    {
+        this.SetDensity(density);
+        this.temp = temp;
+    }
+    public Cold_drinks(int temp)
+    {
+        this.SetDensity(0);
+        this.temp = temp;
+    }
+    /*public Geometrical_Dot(int x, int y)
+    {
+        this.SetX(x);
+        this.SetY(y);
+        this.name = ' ';
+    }*/
+    public Cold_drinks(Cold_drinks c_d)
+    {
+        this.SetDensity(c_d.GetDensity());
+        this.temp = temp;
+    }
+    public char GetTemp()
+    {
+        return (char)this.temp;
+    }
+    public void SetTemp(char value)
+    {
+        this.temp = value;
+    }
+    protected void finalize()
+    {
+    	System.out.println("Destructor Was Called");
+    }
+    public void Read()
+    {
+    	System.out.println("liquid: ");
+    	System.out.println("density: ");
+        int density = scan.nextInt();
+        this.SetDensity(density);
+        System.out.println("temp: ");
+        this.temp = scan.nextInt();
+    }
+    public String ToString()
+    {
+        return "Cold_drinks[" + "liquid: " + "[density: " + this.GetDensity() 
+            + "]" + " temp: " + this.temp + "]";
+    }
+
+}
